@@ -3,6 +3,7 @@ public class Employee {
 	private String name;
 	private Task currentTask;
 	private double hoursLeft;
+	private static AllWork allWork;
 
 	Employee(String name) {
 		if (name != null && !name.equals("")) {
@@ -12,11 +13,16 @@ public class Employee {
 		}
 	}
 
+	public void startWorkingDay(){
+		this.setHoursLeft(8);
+	}
+	
 	public void work() {
 		if (this.currentTask != null) {
 			if (this.currentTask.getWorkingHours() - this.hoursLeft < 0) {
 				this.hoursLeft -= this.currentTask.getWorkingHours();
 				this.currentTask.setWorkingHours(0);
+				
 			} else {
 				this.currentTask.setWorkingHours(this.currentTask.getWorkingHours() - this.hoursLeft);
 				this.hoursLeft = 0;
@@ -36,14 +42,6 @@ public class Employee {
 
 	public String getName() {
 		return name;
-	}
-
-	public void setName(String name) {
-		if (name != null && !name.equals("")) {
-			this.name = name;
-		} else {
-			System.out.println("Incorrect input.");
-		}
 	}
 
 	public Task getCurrentTask() {
@@ -68,6 +66,14 @@ public class Employee {
 		} else {
 			System.out.println("Incorrect hours left.");
 		}
+	}
+	
+	public static AllWork getAllWork() {
+		return allWork;
+	}
+
+	public static void setAllWork(AllWork allWork) {
+		Employee.allWork = allWork;
 	}
 
 }
