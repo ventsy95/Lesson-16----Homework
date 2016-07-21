@@ -12,14 +12,6 @@ public class Task {
 		return name;
 	}
 
-	public void setName(String name) {
-		if (name != null && !name.equals("")) {
-			this.name = name;
-		} else {
-			System.out.println("Incorrect name.");
-		}
-	}
-
 	public double getWorkingHours() {
 		return workingHours;
 	}
