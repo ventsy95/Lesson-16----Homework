@@ -1,17 +1,20 @@
 
 public class AllWork {
+	private static final int RIGHT_END_OF_OPEN_INTERVAL_FOR_FREE_PLACES = 11;
+	private static final int LEFT_END_OF_OPEN_INTERVAL_FOR_FREE_PLACES = -1;
+	private static final int NUMBER_OF_TASKS = 10;
 	Task[] tasks;
 	private int freePlacesForTasks;
 	private int currentUnassignedTask;
 
 	AllWork() {
-		this.freePlacesForTasks = 10;
+		this.freePlacesForTasks = NUMBER_OF_TASKS;
 		this.tasks = new Task[freePlacesForTasks];
 		this.currentUnassignedTask=0;
 	}
 	
 	public void addTask(Task task){
-		if(this.tasks.length-freePlacesForTasks<10){
+		if(this.tasks.length-freePlacesForTasks<NUMBER_OF_TASKS){
 			this.tasks[this.tasks.length-freePlacesForTasks]=task;
 			this.setFreePlacesForTasks(this.freePlacesForTasks-1);
 		}
@@ -38,7 +41,7 @@ public class AllWork {
 	}
 
 	public void setFreePlacesForTasks(int freePlacesForTasks) {
-		if (freePlacesForTasks > -1 && freePlacesForTasks < 11) {
+		if (freePlacesForTasks > LEFT_END_OF_OPEN_INTERVAL_FOR_FREE_PLACES && freePlacesForTasks < RIGHT_END_OF_OPEN_INTERVAL_FOR_FREE_PLACES) {
 			this.freePlacesForTasks = freePlacesForTasks;
 		}
 	}
@@ -48,7 +51,7 @@ public class AllWork {
 	}
 
 	public void setCurrentUnassignedTask(int currentUnassignedTask) {
-		if (currentUnassignedTask > -1 && currentUnassignedTask < 11) {
+		if (currentUnassignedTask > LEFT_END_OF_OPEN_INTERVAL_FOR_FREE_PLACES && currentUnassignedTask < RIGHT_END_OF_OPEN_INTERVAL_FOR_FREE_PLACES) {
 			this.currentUnassignedTask = currentUnassignedTask;
 		}
 	}
