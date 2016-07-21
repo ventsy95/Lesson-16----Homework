@@ -22,7 +22,7 @@ public class AllWork {
 		if (this.currentUnassignedTask == this.tasks.length - 1) {
 			return this.tasks[this.currentUnassignedTask];
 		}
-		if (this.currentUnassignedTask < this.tasks.length - 1) {
+		if (this.currentUnassignedTask>=0 && this.currentUnassignedTask < this.tasks.length - 1) {
 			this.currentUnassignedTask += 1;
 			return this.tasks[this.currentUnassignedTask - 1];
 		} else {
