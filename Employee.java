@@ -13,19 +13,25 @@ public class Employee {
 		}
 	}
 
-	public void startWorkingDay(){
+	public void startWorkingDay() {
 		this.setHoursLeft(8);
 	}
-	
-	public void work() {
+
+	public void work(int day, Task currentTask) {
+		this.currentTask = currentTask;
 		if (this.currentTask != null) {
 			if (this.currentTask.getWorkingHours() - this.hoursLeft < 0) {
 				this.hoursLeft -= this.currentTask.getWorkingHours();
+				System.out.println(
+						"Task: " + this.currentTask.getName() + " finished on day: " + day + " by " + this.name);
 				this.currentTask.setWorkingHours(0);
-				
+				work(day, getAllWork().getNextTask());
 			} else {
 				this.currentTask.setWorkingHours(this.currentTask.getWorkingHours() - this.hoursLeft);
+				System.out.println(this.name + "'s working day ended. " + this.currentTask.getWorkingHours()
+						+ " hours left on his current task: " + this.currentTask.getName());
 				this.hoursLeft = 0;
+				work(day + 1, currentTask);
 			}
 		} else {
 			System.out.println("Current task doesn't exist.");
@@ -67,7 +73,7 @@ public class Employee {
 			System.out.println("Incorrect hours left.");
 		}
 	}
-	
+
 	public static AllWork getAllWork() {
 		return allWork;
 	}
