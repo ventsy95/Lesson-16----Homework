@@ -28,10 +28,9 @@ public class Employee {
 				work(day, getAllWork().getNextTask());
 			} else {
 				this.currentTask.setWorkingHours(this.currentTask.getWorkingHours() - this.hoursLeft);
-				System.out.println(this.name + "'s working day ended. " + this.currentTask.getWorkingHours()
-						+ " hours left on his current task: " + this.currentTask.getName());
+				System.out.println(this.name + "'s working day " + day + " ended. " + this.currentTask.getWorkingHours()
+						+ " hours left on his/her current task: " + this.currentTask.getName());
 				this.hoursLeft = 0;
-				work(day + 1, currentTask);
 			}
 		} else {
 			System.out.println("Current task doesn't exist.");
